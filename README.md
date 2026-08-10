@@ -1,2 +1,184 @@
-# teacher-local-question-bank-builder
-A local-first question bank and PDF homework builder for teachers, with topic and difficulty filtering, exact question-answer matching, and Agent-guided setup.
+# Teacher Local Question Bank Builder
+
+面向教师的本地题库与PDF组卷工具。
+
+教师只需提供自己拥有或获准使用的本地题目资料路径，Codex、WorkBuddy等桌面Agent即可按照统一标准，协助完成题目整理、题答对应、Topic分类、难度标注和PDF组卷。
+
+> Local-first question bank and PDF homework builder for teachers.  
+> No copyrighted examination papers are included.
+
+## ⚠️ 当前版本
+
+当前为 `v0.1.0 Early Preview`，属于非常早期的教师测试版本，主要用于验证这套流程能否在不同学科中复用。
+
+它还不是成熟的一键安装软件。目前可能存在：
+
+- 不同PDF格式需要单独适配
+- 扫描版资料可能需要OCR
+- 跨页题和共用材料题可能需要人工检查
+- Topic、分值和难度分类必须由教师审核
+- 不同桌面Agent的执行能力可能不同
+- 当前主要在macOS环境中测试
+
+请先制作20—50道黄金样本，确认无误后再处理全部题目。
+
+## 主要功能
+
+- 自动识别题目卷和答案卷
+- 精确对应题目、答案与题号
+- 支持一级Topic和二级Topic
+- 支持年份、题型、Topic和难度筛选
+- 每道题必须标注Easy、Medium或Hard
+- 每道题保存难度判断依据
+- 两栏题目选择区＋右侧作业栏
+- 支持题目和答案预览
+- 支持选题排序与分值统计
+- 后台生成真正的PDF试卷
+
+最终输出：
+
+```text
+Questions.pdf
+MarkScheme.pdf
+Manifest.json
+```
+
+## 使用条件
+
+需要使用能够：
+
+- 读取本地文件
+- 处理和渲染PDF
+- 运行Python程序
+- 创建本地网页
+- 检查导出PDF
+
+的桌面Agent，例如Codex、WorkBuddy或类似工具。
+
+普通网页聊天机器人或只能对话的手机端AI无法独立完成建库。
+
+## 快速开始
+
+### 1. 下载
+
+在仓库右侧进入 `Releases`，下载最新安装包并解压。
+
+### 2. 填写资料路径
+
+打开：
+
+```text
+01-复制给Agent-安装Prompt.txt
+```
+
+只修改：
+
+```text
+真题资料路径：你的本地资料文件夹完整路径
+安装位置：AUTO
+```
+
+### 3. 发送给Agent
+
+把整个安装包文件夹交给桌面Agent，并发送Prompt全文。
+
+Agent会先：
+
+1. 识别课程、学科和资料结构
+2. 建立题目与答案对应
+3. 创建Topic和二级Topic
+4. 分类题型、分值和难度
+5. 制作20—50道黄金样本
+6. 打开本地筛题页面
+7. 导出测试版学生卷和答案卷
+
+### 4. 教师检查
+
+重点检查：
+
+- 题目裁切是否完整
+- 题目和答案是否对应
+- 题号和分值是否正确
+- Topic和二级Topic是否合理
+- 难度标签是否合理
+- PDF排版是否清晰
+
+### 5. 完成全部题库
+
+黄金样本确认后，将下面文件中的内容发送给同一个Agent：
+
+```text
+02-样本确认后继续Prompt.txt
+```
+
+Agent才会按照已确认的规则处理完整题库。
+
+## 难度要求
+
+每道题必须且只能选择一种难度：
+
+- `Easy`：直接回忆或一步应用
+- `Medium`：需要多步推理、信息转换或知识组合
+- `Hard`：需要复杂建模、陌生情境或多层推理
+
+难度覆盖率必须为100%，不能使用空白、待定、`Pending`或`Needs review`。
+
+难度不能只根据分值判断，还应考虑推理步骤、知识调用数量、情境陌生度、图像和数据转换以及干扰项强度。
+
+## 隐私与版权
+
+- 原始资料默认只读
+- 不移动、覆盖或删除教师文件
+- 题目、答案和学生资料默认保存在本机
+- 不应将教学资料上传至第三方云端
+- 本仓库不包含任何考试机构的原始试卷、Mark Scheme或真题截图
+
+使用者只能处理自己原创、学校授权或依法取得的资料。
+
+本项目与Cambridge International、Pearson Edexcel、IB及其他考试机构没有隶属、授权或背书关系。
+
+## 使用许可
+
+本项目仅允许用于：
+
+- 个人学习
+- 教师备课
+- 学校内部教学
+- 非商业研究与交流
+
+未经书面许可，禁止商业销售、付费部署、收费SaaS、重新包装销售或作为商业产品的一部分进行分发。
+
+完整授权范围以仓库中的 `LICENSE` 文件为准。
+
+## 项目结构
+
+```text
+00-小白只看这里.txt
+01-复制给Agent-安装Prompt.txt
+02-样本确认后继续Prompt.txt
+agent-pack/
+├── SPEC.md
+├── AGENTS.md
+├── schemas/
+├── examples/
+├── production-baseline/
+└── tests/
+```
+
+## 反馈
+
+当前阶段的重点是验证真实教学场景，而不是承诺所有资料都能一次性自动处理完成。
+
+欢迎通过Issue反馈：
+
+- 题目与答案对应问题
+- Topic层级问题
+- 难度分类问题
+- PDF排版问题
+- 不同学科的适配建议
+
+## 免责声明
+
+Agent用于减少教师的重复劳动，不代替教师的专业判断。
+
+所有题目分类、难度判断、答案对应和最终作业都应由教师审核。
