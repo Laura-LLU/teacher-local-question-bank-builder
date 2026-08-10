@@ -22,6 +22,14 @@
 
 请先制作20—50道黄金样本，确认无误后再处理全部题目。
 
+## 下载
+
+当前版本为早期测试版。
+
+[点击下载 teacher-local-question-bank-builder v0.1.0](https://github.com/Laura-LLU/teacher-local-question-bank-builder/releases/download/v0.1.0/teacher-local-question-bank-builder-9702-private-v0.1.0.zip)
+
+下载后解压，并从 `00-小白只看这里.txt` 开始阅读。
+
 ## 主要功能
 
 - 自动识别题目卷和答案卷
