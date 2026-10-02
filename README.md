@@ -10,7 +10,6 @@
 ## ⚠️ 当前版本
 
 当前为 `v0.1.0 Early Preview`，属于早期的教师测试版本，主要用于验证这套流程能否在不同学科中复用。
-(如有问题VX联系➡️LLUPAT）
 
 它还不是成熟的一键安装软件。目前可能存在：
 
@@ -26,6 +25,7 @@
 ## 下载
 
 当前版本为早期测试版。
+(如有问题VX联系➡️LLUPAT）
 
 [点击下载 teacher-local-question-bank-builder v0.1.0](https://github.com/Laura-LLU/teacher-local-question-bank-builder/releases/download/v0.1.0/teacher-local-question-bank-builder-9702-private-v0.1.0.zip)
 
