@@ -216,3 +216,23 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Board-to-homework private working data
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+.env*
+private/
+output/
+qa/
+*.pdf
+*.webp
+*.png
+*.jpg
+*.jpeg
+*.zip
+*.jsonl
+catalog.json
+bank.json
+checksums.json
