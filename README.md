@@ -1,16 +1,29 @@
 # 一张板书 / 一句话，生成物理作业
 
-**老师安装技能后，直接选择课程、发板书或说出要求，获取学生卷和答案卷。默认不需要自备题库、建库、填写资料路径或API Key。**
+**面向Codex、Claude Code、WorkBuddy等Agent的通用物理作业技能。老师安装技能后，直接选择课程、发板书或说出要求，获取学生卷和答案卷。默认不需要自备题库、建库、填写资料路径或API Key。**
 
 内置题库入口：9702物理4330题，0625物理2256题，共6586题。完整索引随技能安装；题目和答案从作者现有公开题库站点按需校验、缓存。首次需联网准备环境和素材，不必先下载整套大题库。
 
 ## 老师怎么用
 
-1. 在WorkBuddy等支持本地文件、执行和视觉阅读的Agent中安装本技能。
+1. 下载通用技能安装包，交给Codex、Claude Code或其他支持文件、执行和视觉阅读的Agent安装；WorkBuddy也提供专用导入包。
 2. 说明课程并发送板书，或直接说“9702 A2圆周运动，3道中等结构题，不考引力”。
 3. Agent自动准备环境与候选素材，查看完整题目/答案，按已教范围筛题，输出两份PDF供老师复核。
 
 0625示例：“0625 Extended速度—时间图，6道选择题和2道结构题，排除能量。”普通老师不需要操作终端或理解内部文件结构。系统或宿主的正常授权提示仍须本人确认。
+
+## 安装到不同Agent
+
+通用分发文件为physics-homework-<版本>-agent-skill.zip，包含完整physics-homework目录。让Agent阅读包中SKILL.md并代为安装；老师无需操作终端。它是一份通用技能，由不同宿主各自加载，同一题库与规则不会随平台改变。
+
+| 入口 | 安装与使用 |
+| --- | --- |
+| Codex | 使用技能安装工具，或由Agent安装到支持的技能位置；可用$physics-homework触发 |
+| Claude Code | 由Agent安装到个人/项目技能目录；可用/physics-homework触发 |
+| WorkBuddy | 使用附带展示字段的workbuddy.zip导入 |
+| 其他Agent | 支持标准Skill时安装完整目录，否则明确读取SKILL.md后执行；需要相同工具能力 |
+
+详细目录、官方来源、识别检查和更新规则见[跨Agent安装说明](skill/physics-homework/references/agent-installation.md)。仅支持聊天或不允许运行程序的界面无法完成本地出卷；Claude网页聊天与Claude Code不能直接视为同一个环境。兼容格式不等于各客户端已完成实测。
 
 ## 包内有什么
 
@@ -29,9 +42,10 @@
 
 ## 开发与打包
 
-通用Agent使用 `skill/physics-homework/SKILL.md`；WorkBuddy导入包由下列命令生成：
+通用Agent使用 `skill/physics-homework/SKILL.md`，默认生成通用技能包；WorkBuddy只额外适配导入展示字段：
 
 ```bash
+python tools/package_skill.py --output /本机目录/physics-homework-agent-skill.zip
 python tools/package_skill.py --platform workbuddy --output /本机目录/physics-homework-workbuddy.zip
 ```
 

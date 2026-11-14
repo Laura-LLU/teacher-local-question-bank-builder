@@ -3,7 +3,7 @@ from pathlib import Path
 import argparse,json,re,zipfile
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--platform',choices=['standard','workbuddy'],default='workbuddy');ap.add_argument('--output',required=True)
+    ap=argparse.ArgumentParser();ap.add_argument('--platform',choices=['standard','workbuddy'],default='standard');ap.add_argument('--output',required=True)
     args=ap.parse_args();root=Path(__file__).resolve().parents[1];skill=root/'skill/physics-homework'
     text=(skill/'SKILL.md').read_text();_,header,body=text.split('---',2)
     if args.platform=='workbuddy':

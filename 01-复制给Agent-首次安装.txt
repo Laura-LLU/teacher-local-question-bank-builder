@@ -1,8 +1,12 @@
 请安装并使用这个“板书到作业：9702与0625物理”技能，按完全小白的使用方式帮我完成一次真实出卷。
 
-先阅读skill/physics-homework/SKILL.md。默认使用包内6586题索引，不要求我提供题库、资料路径或API Key，不让我手工建库。
+请先定位并阅读完整physics-homework目录里的SKILL.md；源码包内路径为skill/physics-homework/SKILL.md，通用技能ZIP内路径为physics-homework/SKILL.md。读取references/agent-installation.md，按当前宿主（Codex、Claude Code、WorkBuddy或其他Agent）的真实机制安装，并检查技能是否被识别。不要假设所有Agent使用相同的目录或导入按钮；目标已有技能时先核对版本和用户改动，不盲目覆盖。
 
-Mac执行scripts/run.sh，Windows执行scripts/run.ps1，由入口自动准备独立运行环境。首次联网按需缓存题目和答案，不把大题库上传商城，不修改系统Python或关闭系统保护。遇到必须本人确认的宿主授权，只说明那一个具体动作。
+先检查当前Agent能读写文件、执行程序、联网下载、查看图片和PDF页面。缺少必要能力请说明具体限制；无法持久安装但可读取并执行时，可以先明确加载SKILL.md完成这一次作业，并如实区分安装状态。
+
+默认使用包内6586题索引，不要求我提供题库、资料路径或API Key，不让我手工建库。
+
+以实际技能目录定位脚本，不依赖当前目录。Mac/Linux执行scripts/run.sh，Windows执行scripts/run.ps1，由入口自动准备独立运行环境。首次联网按需缓存题目和答案，不修改系统Python或关闭系统保护。遇到必须本人确认的宿主授权，只说明那一个具体动作。
 
 如果我还没说课程，请只问我教9702还是0625。课程已明确就直接按我的板书或要求开始。先检索候选并查看完整题目和答案，再按教学边界筛题、导出和逐页检查。内置素材不覆盖时如实说明，不硬套其他课程。
 
