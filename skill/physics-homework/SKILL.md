@@ -1,18 +1,8 @@
 ---
 name: physics-homework
-display_name: 板书到作业：9702与0625物理
-display_name_en: Physics Board to Homework
-description: 根据一张课堂板书或一句Topic要求，从用户授权本地题库中选取9702/0625物理题，匹配答案并输出独立学生卷和答案卷。需本地文件、Python与图像/PDF阅读能力。
-description_zh: 一张板书或一句话，按已教内容筛题、配答案并生成作业；支持9702与0625，首次需绑定授权题库，不含真题数据。
-description_en: Turn a board image or topic request into paired Physics 9702/0625 homework PDFs using a user-authorized local question bank.
-version: 0.3.0
-author: LauraPhysics
-examples_zh:
-  - "9702 A2圆周运动，3道中等结构题，不考引力。"
-  - "0625 Extended速度—时间图，6道选择题和2道结构题，排除能量。"
-  - "根据这张0625板书布置作业，排除已经讲过的例题。"
-examples_en:
-  - "9702 A2: three medium circular-motion questions, excluding gravitation."
+description: "根据一张课堂板书或一句Topic要求，从用户授权本地题库中选取9702/0625物理题，匹配答案并输出独立学生卷和答案卷。需本地文件、Python与图像/PDF阅读能力。"
+license: MIT
+metadata: {"author": "LauraPhysics", "version": "0.3.0", "display_name": "板书到作业：9702与0625物理", "workbuddy": {"display_name": "板书到作业：9702与0625物理", "display_name_en": "Physics Board to Homework", "description_zh": "一张板书或一句话，按已教内容筛题、配答案并生成作业；支持9702与0625，首次需绑定授权题库，不含真题数据。", "description_en": "Turn a board image or topic request into paired Physics 9702/0625 homework PDFs using a user-authorized local question bank.", "version": "0.3.0", "author": "LauraPhysics", "examples_zh": ["9702 A2圆周运动，3道中等结构题，不考引力。", "0625 Extended速度—时间图，6道选择题和2道结构题，排除能量。"], "examples_en": ["9702 A2: three medium circular-motion questions, excluding gravitation."]}}
 ---
 
 # 板书到作业：9702 / 0625物理

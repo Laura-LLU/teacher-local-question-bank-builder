@@ -28,7 +28,7 @@ python skill/physics-homework/scripts/homework.py --workspace /你的本机目�
 
 ## 在Agent里使用
 
-将 `skill/physics-homework` 按宿主支持的方式安装为技能，或把整个项目目录提供给Agent。WorkBuddy可本地导入打包后的技能ZIP；不要把资料库上传到开放平台发布页。
+将 `skill/physics-homework` 按宿主支持的方式安装为技能，或把整个项目目录提供给Agent。标准SKILL.md适用于通用Agent；WorkBuddy导入包由 `python tools/package_skill.py --platform workbuddy --output <新ZIP路径>` 生成，会自动加入其所需展示字段。WorkBuddy可本地导入该技能ZIP；不要把资料库上传到开放平台发布页。
 
 第一次说明课程及授权资料路径，让Agent阅读Skill并完成题库绑定；原始PDF资料先建立可核验的小样本。后续可以直接说：
 
