@@ -1,192 +1,62 @@
-# Teacher Local Question Bank Builder
+# 一张板书 / 一句话，生成物理作业
 
-面向教师的本地题库与PDF组卷工具。
+**面向Codex、Claude Code、WorkBuddy等Agent的通用物理作业技能。老师安装技能后，直接选择课程、发板书或说出要求，获取学生卷和答案卷。默认不需要自备题库、建库、填写资料路径或API Key。**
 
-教师只需提供自己拥有或获准使用的本地题目资料路径，Codex、WorkBuddy等桌面Agent即可按照统一标准，协助完成题目整理、题答对应、Topic分类、难度标注和PDF组卷。
+内置题库入口：9702物理4330题，0625物理2256题，共6586题。完整索引随技能安装；题目和答案从作者现有公开题库站点按需校验、缓存。首次需联网准备环境和素材，不必先下载整套大题库。
 
-> Local-first question bank and PDF homework builder for teachers.  
-> No copyrighted examination papers are included.
+## 老师怎么用
 
-## ⚠️ 当前版本
+1. 下载通用技能安装包，交给Codex、Claude Code或其他支持文件、执行和视觉阅读的Agent安装；WorkBuddy也提供专用导入包。
+2. 说明课程并发送板书，或直接说“9702 A2圆周运动，3道中等结构题，不考引力”。
+3. Agent自动准备环境与候选素材，查看完整题目/答案，按已教范围筛题，输出两份PDF供老师复核。
 
-当前为 `v0.1.0 Early Preview`，属于早期的教师测试版本，主要用于验证这套流程能否在不同学科中复用。
+0625示例：“0625 Extended速度—时间图，6道选择题和2道结构题，排除能量。”普通老师不需要操作终端或理解内部文件结构。系统或宿主的正常授权提示仍须本人确认。
 
-它还不是成熟的一键安装软件。目前可能存在：
+## 安装到不同Agent
 
-- 不同PDF格式需要单独适配
-- 扫描版资料可能需要OCR
-- 跨页题和共用材料题可能需要人工检查
-- Topic、分值和难度分类必须由教师审核
-- 不同桌面Agent的执行能力可能不同
-- 当前主要在macOS环境中测试
+通用分发文件为physics-homework-<版本>-agent-skill.zip，包含完整physics-homework目录。让Agent阅读包中SKILL.md并代为安装；老师无需操作终端。它是一份通用技能，由不同宿主各自加载，同一题库与规则不会随平台改变。
 
-请先制作20—50道黄金样本，确认无误后再处理全部题目。
+| 入口 | 安装与使用 |
+| --- | --- |
+| Codex | 使用技能安装工具，或由Agent安装到支持的技能位置；可用$physics-homework触发 |
+| Claude Code | 由Agent安装到个人/项目技能目录；可用/physics-homework触发 |
+| WorkBuddy | 使用附带展示字段的workbuddy.zip导入 |
+| 其他Agent | 支持标准Skill时安装完整目录，否则明确读取SKILL.md后执行；需要相同工具能力 |
 
-## 下载
+详细目录、官方来源、识别检查和更新规则见[跨Agent安装说明](skill/physics-homework/references/agent-installation.md)。仅支持聊天或不允许运行程序的界面无法完成本地出卷；Claude网页聊天与Claude Code不能直接视为同一个环境。兼容格式不等于各客户端已完成实测。
 
-当前版本为早期测试版。
-(如有问题VX联系➡️LLUPAT）
+## 包内有什么
 
-[点击下载 teacher-local-question-bank-builder v0.1.0](https://github.com/Laura-LLU/teacher-local-question-bank-builder/releases/download/v0.1.0/teacher-local-question-bank-builder-9702-private-v0.1.0.zip)
+- 两门课的题库索引、出处、Topic/子知识点、难度与图片完整性标记。
+- 自动首次准备入口及按需题目/答案缓存。
+- 板书与一句话选题规则、课程分流、去重、配对PDF输出及检查流程。
+- 可选的原创演示，以及接入其他授权题库的高级工具。
 
-下载后解压，并从 `00-小白只看这里.txt` 开始阅读。
+包内没有整套真题图片和官方答案文件；它们在首次需要时从已有公开来源获取。代码与原创规则按MIT开放；第三方考试材料不因本项目而成为MIT材料，不承诺脱离网络后能使用尚未缓存的题目。
 
-## 主要功能
+## 当前范围
 
-- 自动识别题目卷和答案卷
-- 精确对应题目、答案与题号
-- 支持一级Topic和二级Topic
-- 支持年份、题型、Topic和难度筛选
-- 每道题必须标注Easy、Medium或Hard
-- 每道题保存难度判断依据
-- 两栏题目选择区＋右侧作业栏
-- 支持题目和答案预览
-- 支持选题排序与分值统计
-- 后台生成真正的PDF试卷
+9702索引含AS Paper1/2、A2 Paper4及实验Paper3/5。0625当前内置素材为Extended Paper2/4；Core与实验题的分流规则存在，但没有相应内置素材时会说明不支持，不混入Extended题冒充。课程参考分别为2025–2027和2026–2028。
 
-最终输出：
+已在Mac空白工作目录中自动下载独立Python、安装依赖、初始化两门课程并生成真实素材作业/答案，未预置资料或手动绑定题库。WorkBuddy真实宿主安装与调用仍待测试；Windows入口已提供，独立Windows实机仍需测试。板书理解和语义筛题依赖宿主模型，不是脚本自带视觉模型，不承诺零错误。平台模型与积分消耗按宿主规则。
 
-```text
-Questions.pdf
-MarkScheme.pdf
-Manifest.json
+## 开发与打包
+
+通用Agent使用 `skill/physics-homework/SKILL.md`，默认生成通用技能包；WorkBuddy只额外适配导入展示字段：
+
+```bash
+python tools/package_skill.py --output /本机目录/physics-homework-agent-skill.zip
+python tools/package_skill.py --platform workbuddy --output /本机目录/physics-homework-workbuddy.zip
 ```
 
-## 使用条件
+安装包包含索引，首次运行通过官方uv工具在专用工作目录准备独立Python和依赖，不改变系统Python或shell配置。资料默认缓存到当前用户的~/codex/physics-homework，不写iCloud。可通过PHYSICS_HOME指定独立测试目录。
 
-需要使用能够：
+开发验证：`python -m unittest discover -s tests -v`。高级自有题库绑定参见[首次建库说明](skill/physics-homework/references/first-bank.md)，它不是小白用户的前置要求。原创演示由examples/create_demo.py生成，不能称为官方真题。
 
-- 读取本地文件
-- 处理和渲染PDF
-- 运行Python程序
-- 创建本地网页
-- 检查导出PDF
+## 开源与培训
 
-的桌面Agent，例如Codex、WorkBuddy或类似工具。
+代码、原创规则和本项目自有元数据工作流采用[MIT](LICENSE)，允许使用、修改和商用，保留许可声明。考试材料按其原有权利和来源条件使用。项目独立开发，与Cambridge International无隶属或背书关系。
 
-普通网页聊天机器人或只能对话的手机端AI无法独立完成建库。
+免费自助工具可作为教师体验入口；实操培训、资料适配和学校实施服务可单独提供，不强制购买培训、关注或加群才能使用。历史Release附件和私人完整题库迁移包不由本次MIT代码许可自动重新许可。
 
-## 快速开始
-
-### 1. 下载
-
-在仓库右侧进入 `Releases`，下载最新安装包并解压。
-
-### 2. 填写资料路径
-
-打开：
-
-```text
-01-复制给Agent-安装Prompt.txt
-```
-
-只修改：
-
-```text
-真题资料路径：你的本地资料文件夹完整路径
-安装位置：AUTO
-```
-
-### 3. 发送给Agent
-
-把整个安装包文件夹交给桌面Agent，并发送Prompt全文。
-
-Agent会先：
-
-1. 识别课程、学科和资料结构
-2. 建立题目与答案对应
-3. 创建Topic和二级Topic
-4. 分类题型、分值和难度
-5. 制作20—50道黄金样本
-6. 打开本地筛题页面
-7. 导出测试版学生卷和答案卷
-
-### 4. 教师检查
-
-重点检查：
-
-- 题目裁切是否完整
-- 题目和答案是否对应
-- 题号和分值是否正确
-- Topic和二级Topic是否合理
-- 难度标签是否合理
-- PDF排版是否清晰
-
-### 5. 完成全部题库
-
-黄金样本确认后，将下面文件中的内容发送给同一个Agent：
-
-```text
-02-样本确认后继续Prompt.txt
-```
-
-Agent才会按照已确认的规则处理完整题库。
-
-## 难度要求
-
-每道题必须且只能选择一种难度：
-
-- `Easy`：直接回忆或一步应用
-- `Medium`：需要多步推理、信息转换或知识组合
-- `Hard`：需要复杂建模、陌生情境或多层推理
-
-难度覆盖率必须为100%，不能使用空白、待定、`Pending`或`Needs review`。
-
-难度不能只根据分值判断，还应考虑推理步骤、知识调用数量、情境陌生度、图像和数据转换以及干扰项强度。
-
-## 隐私与版权
-
-- 原始资料默认只读
-- 不移动、覆盖或删除教师文件
-- 题目、答案和学生资料默认保存在本机
-- 不应将教学资料上传至第三方云端
-
-使用者只能处理自己原创、学校授权或依法取得的资料。
-
-本项目与Cambridge International、Pearson Edexcel、IB及其他考试机构没有隶属、授权或背书关系。
-
-## 使用许可
-
-本项目仅允许用于：
-
-- 个人学习
-- 教师备课
-- 学校内部教学
-- 非商业研究与交流
-
-未经书面许可，禁止商业销售、付费部署、收费SaaS、重新包装销售或作为商业产品的一部分进行分发。
-
-完整授权范围以仓库中的 `LICENSE` 文件为准。
-
-## 项目结构
-
-```text
-00-小白只看这里.txt
-01-复制给Agent-安装Prompt.txt
-02-样本确认后继续Prompt.txt
-agent-pack/
-├── SPEC.md
-├── AGENTS.md
-├── schemas/
-├── examples/
-├── production-baseline/
-└── tests/
-```
-
-## 反馈
-
-当前阶段的重点是验证真实教学场景，而不是承诺所有资料都能一次性自动处理完成。
-
-欢迎通过Issue反馈：
-
-- 题目与答案对应问题
-- Topic层级问题
-- 难度分类问题
-- PDF排版问题
-- 不同学科的适配建议
-
-## 免责声明
-
-Agent用于减少教师的重复劳动，不代替教师的专业判断。
-
-所有题目分类、难度判断、答案对应和最终作业都应由教师审核。
+错误反馈请提供课程、系统和已脱敏复现步骤，不公开学生答卷或凭据。

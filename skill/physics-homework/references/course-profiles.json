@@ -1,0 +1,78 @@
+{
+  "9702": {
+    "name": "Cambridge International AS & A Level Physics",
+    "years": [
+      2025,
+      2026,
+      2027
+    ],
+    "levels": {
+      "AS": {
+        "mcq": [
+          "1"
+        ],
+        "structured": [
+          "2"
+        ]
+      },
+      "A2": {
+        "mcq": [],
+        "structured": [
+          "4"
+        ]
+      },
+      "P3": {
+        "mcq": [],
+        "structured": [
+          "3"
+        ]
+      },
+      "P5": {
+        "mcq": [],
+        "structured": [
+          "5"
+        ]
+      }
+    },
+    "syllabus": "https://www.cambridgeinternational.org/Images/664565-2025-2027-syllabus.pdf"
+  },
+  "0625": {
+    "name": "Cambridge IGCSE Physics",
+    "years": [
+      2026,
+      2027,
+      2028
+    ],
+    "levels": {
+      "Core": {
+        "mcq": [
+          "1"
+        ],
+        "structured": [
+          "3"
+        ]
+      },
+      "Extended": {
+        "mcq": [
+          "2"
+        ],
+        "structured": [
+          "4"
+        ]
+      },
+      "P5": {
+        "mcq": [],
+        "structured": [
+          "5"
+        ]
+      },
+      "P6": {
+        "mcq": [],
+        "structured": [
+          "6"
+        ]
+      }
+    },
+    "syllabus": "https://www.cambridgeinternational.org/Images/697209-2026-2028-syllabus.pdf"
+  }
+}
