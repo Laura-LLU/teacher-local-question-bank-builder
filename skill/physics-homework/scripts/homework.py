@@ -104,7 +104,8 @@ def allowed(course,level):
     return set(p['mcq']+p['structured'])
 
 def load_bank(workspace,course):
-    data=read(workspace/course/'bank.json')
+    from builtin_bank import ensure_index
+    data=read(ensure_index(workspace,course))
     if data['course']!=course:raise ValueError('Cross-course bank file')
     return data['questions']
 
@@ -152,6 +153,8 @@ def main():
             if pattern and not pattern.search(' '.join([r.get('search_text',''),*r['topics'],*r['subtopics']])):continue
             matches.append(r)
         matches.sort(key=lambda r:(r.get('year',0),r['id']),reverse=True)
+        from builtin_bank import ensure_assets
+        ensure_assets(matches[:max(0,args.limit)])
         print(json.dumps({'matches':len(matches),'candidates':matches[:max(0,args.limit)],
                           'note':'Tags only shortlist. Inspect complete questions and answers against the lesson boundary.'},ensure_ascii=False,indent=2));return
     if not args.checked:raise ValueError('Inspect complete questions, answers and lesson boundaries first; then use --checked')
@@ -161,6 +164,8 @@ def main():
     if any(i not in by_id for i in args.ids):raise ValueError('Unknown or cross-course ID')
     selected=[by_id[i] for i in args.ids]
     if any(r['paper'] not in papers for r in selected):raise ValueError('Question paper does not match selected course/level')
+    from builtin_bank import ensure_assets
+    ensure_assets(selected)
     import pdf_engine
     pdf_engine.CURRENT_COURSE=args.course
     sources=[Path(r[k]).resolve() for r in rows for k in ['question_image','answer_image']]
@@ -184,4 +189,4 @@ def main():
 
 if __name__=='__main__':
     try:main()
-    except (ValueError,FileNotFoundError,KeyError) as exc:raise SystemExit(str(exc))
+    except (ValueError,FileNotFoundError,KeyError,RuntimeError) as exc:raise SystemExit(str(exc))

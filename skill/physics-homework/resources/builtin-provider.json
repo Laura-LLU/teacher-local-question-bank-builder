@@ -1,0 +1,13 @@
+{
+  "origins": [
+    "https://lauraphysics.com",
+    "https://laura-physics-bank-pages.pages.dev"
+  ],
+  "version": "web-full-0.3.8",
+  "counts": {
+    "9702": 4330,
+    "0625": 2256
+  },
+  "public_index_sha256": "290bd575ab2e23a2117028efcac298f9e7005f1d4d6832aefadb21536fa4dc62",
+  "material_notice": "Code and original metadata workflow are MIT. Examination images remain third-party materials under their own rights and source terms."
+}
